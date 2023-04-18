@@ -1,0 +1,11 @@
+.next
+__generated__
+schema.graphql
+pnpm-lock.yaml
+
+# Ignore Terraform files
+*.tf
+*.hcl
+
+# Readme
+*.md
