@@ -1,10 +1,12 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 import Button from "./Button";
 
 function Header() {
+  const { isSignedIn, user } = useUser();
   return (
-    <header className="fixed flex w-full items-center justify-end gap-2 px-6 py-3">
+    <header className="fixed flex w-full items-center justify-end gap-3 px-6 py-3">
       <SignedIn>
+        {isSignedIn && <p className="mr-4">Hello, {user.firstName}</p>}
         <UserButton />
       </SignedIn>
       <SignedOut>
