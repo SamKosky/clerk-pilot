@@ -1,12 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import ClientOnly from "~/components/ClientOnly";
+import Countries from "~/components/Countries";
 import Header from "~/components/Header";
 
-import { api } from "~/utils/api";
-
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -24,9 +22,9 @@ const Home: NextPage = () => {
             Vercel | Hasura | Postgres | Clerk
           </h2>
 
-          <p className="text-2xl text-black">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          <ClientOnly>
+            <Countries />
+          </ClientOnly>
         </div>
       </main>
     </>

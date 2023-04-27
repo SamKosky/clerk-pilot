@@ -3,6 +3,7 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import { ApolloProviderWrapper } from "~/utils/ApolloProviderWrapper";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -10,17 +11,19 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       {...pageProps}
       appearance={{
         layout: {
-          helpPageUrl: "https://clerk.dev/support",
+          helpPageUrl: "https://aginic.ventures",
           logoPlacement: "inside",
-          privacyPageUrl: "https://clerk.dev/privacy",
+          privacyPageUrl: "https://aginic.ventures",
           showOptionalFields: true,
           socialButtonsPlacement: "bottom",
           socialButtonsVariant: "iconButton",
-          termsPageUrl: "https://clerk.dev/terms",
+          termsPageUrl: "https://aginic.ventures",
         },
       }}
     >
-      <Component {...pageProps} />
+      <ApolloProviderWrapper>
+        <Component {...pageProps} />
+      </ApolloProviderWrapper>
     </ClerkProvider>
   );
 };
