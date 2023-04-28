@@ -1,0 +1,7 @@
+.next
+__generated__
+schema.graphql
+pnpm-lock.yaml
+
+# Readme
+*.md

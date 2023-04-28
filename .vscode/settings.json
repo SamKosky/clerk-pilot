@@ -8,5 +8,13 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "dotenv.enableAutocloaking": false
+  "dotenv.enableAutocloaking": false,
+  "graphql-codegen.configFilePath": "graphql.config.ts",
+  "graphql-codegen.filePathToWatch": "apps/web/src/**/*.{graphql,js,ts,jsx,tsx}",
+  "graphql-codegen.fileExtensionsDeclaringGraphQLDocuments": [
+    "graphql",
+    "gql",
+    "ts",
+    "tsx"
+  ]
 }
