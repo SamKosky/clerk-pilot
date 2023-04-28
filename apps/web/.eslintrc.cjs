@@ -14,7 +14,7 @@ const config = {
       },
     },
   ],
-  ignorePatterns: ["src/types/graphql/**"],
+  ignorePatterns: ["src/types/generated/**"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: path.join(__dirname, "tsconfig.json"),
