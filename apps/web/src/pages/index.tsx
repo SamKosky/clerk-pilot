@@ -1,12 +1,34 @@
 import { SignedIn } from "@clerk/nextjs";
-import { type NextPage } from "next";
+import {
+  type GetServerSideProps,
+  type InferGetServerSidePropsType,
+} from "next";
 import Head from "next/head";
 import Link from "next/link";
 import ClientOnly from "~/components/ClientOnly";
 import Countries from "~/components/Countries";
 import Header from "~/components/Header";
 
-const Home: NextPage = () => {
+export const getServerSideProps: GetServerSideProps<{
+  city: string;
+  region: string;
+  country: string;
+  // eslint-disable-next-line @typescript-eslint/require-await
+}> = async ({ query }) => {
+  return {
+    props: {
+      city: String(query.city),
+      region: String(query.region),
+      country: String(query.country),
+    },
+  };
+};
+
+function Home({
+  city,
+  region,
+  country,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -30,6 +52,25 @@ const Home: NextPage = () => {
           >
             Go to: Server-side
           </Link>
+
+          <div className="flexborder-b rounded-xl bg-gray-50 p-4">
+            <h4 className="text-left font-semibold">Geolocation Headers</h4>
+            <pre className="mt-4 rounded-xl bg-black px-4 py-2 text-left font-mono text-sm leading-6 text-white">
+              <p>
+                <strong>{"x-vercel-ip-city: "}</strong>
+                {city}
+              </p>
+              <p>
+                <strong>{"x-vercel-ip-country-region: "}</strong>
+                {region}
+              </p>
+              <p>
+                <strong>{"x-vercel-ip-country: "}</strong>
+                {country}
+              </p>
+            </pre>
+          </div>
+
           <SignedIn>
             <ClientOnly>
               <Countries />
@@ -39,6 +80,6 @@ const Home: NextPage = () => {
       </main>
     </>
   );
-};
+}
 
 export default Home;

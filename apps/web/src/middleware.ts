@@ -12,6 +12,21 @@ const isPublic = (path: string) => {
 };
 
 export default withClerkMiddleware((request: NextRequest) => {
+  if (request.nextUrl.pathname === "/") {
+    const { nextUrl: url, geo } = request;
+    if (!geo) return NextResponse.next();
+
+    const country = geo.country || "AU";
+    const city = geo.city || "Brisbane";
+    const region = geo.region || "South-east QLD";
+
+    url.searchParams.set("country", country);
+    url.searchParams.set("city", city);
+    url.searchParams.set("region", region);
+
+    return NextResponse.rewrite(url);
+  }
+
   if (isPublic(request.nextUrl.pathname)) {
     return NextResponse.next();
   }
