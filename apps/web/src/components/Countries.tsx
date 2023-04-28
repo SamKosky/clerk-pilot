@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { getCountries } from "~/graphql";
-import { type GetCountriesQuery } from "~/types/graphql";
+import { type GetCountriesQuery } from "~/types/graphql/graphql";
 
 export default function Countries() {
   const { data, loading, error } = useQuery<GetCountriesQuery>(getCountries);

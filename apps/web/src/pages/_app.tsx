@@ -1,6 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { type AppType } from "next/app";
-import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import { ApolloProviderWrapper } from "~/utils/ApolloProviderWrapper";
@@ -28,4 +27,4 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   );
 };
 
-export default api.withTRPC(MyApp);
+export default MyApp;

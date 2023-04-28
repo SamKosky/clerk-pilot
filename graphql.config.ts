@@ -16,10 +16,16 @@ const config: IGraphQLConfig = {
       documents: ["./apps/web/src/**/*.{graphql,js,ts,jsx,tsx}"],
       extensions: {
         codegen: {
+          overwrite: true,
           generates: {
-            "./apps/web/src/types/": {
+            "./apps/web/src/types/graphql/": {
               preset: "client",
-              plugins: ["typescript", "typed-document-node"],
+              config: {
+                namingConvention: {
+                  typeNames: "change-case-all#pascalCase",
+                  transformUnderscore: true,
+                },
+              },
             },
           },
         },

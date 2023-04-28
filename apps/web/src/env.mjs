@@ -7,7 +7,7 @@ import { z } from "zod";
 const server = z.object({
   CLERK_SECRET_KEY: z.string(),
   DATABASE_URL: z.string().url(),
-  VERCEL_URL: z.string().url().optional(),
+  VERCEL_URL: z.string().optional(),
   NODE_ENV: z.enum(["development", "test", "production"]),
 });
 

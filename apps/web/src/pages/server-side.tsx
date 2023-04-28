@@ -9,7 +9,7 @@ import Head from "next/head";
 import Header from "~/components/Header";
 import { env } from "~/env.mjs";
 import { getCountries } from "~/graphql";
-import { type Country, type GetCountriesQuery } from "~/types/graphql";
+import { type Country, type GetCountriesQuery } from "~/types/graphql/graphql";
 
 export const getServerSideProps: GetServerSideProps<{
   countries?: Country[];
