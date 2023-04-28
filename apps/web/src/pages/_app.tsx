@@ -14,8 +14,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           logoPlacement: "inside",
           privacyPageUrl: "https://aginic.ventures",
           showOptionalFields: true,
-          socialButtonsPlacement: "bottom",
-          socialButtonsVariant: "iconButton",
+          socialButtonsPlacement: "top",
+          socialButtonsVariant: "blockButton",
           termsPageUrl: "https://aginic.ventures",
         },
       }}

@@ -46,12 +46,23 @@ function Home({
             Vercel | Hasura | Postgres | Clerk
           </h2>
 
-          <Link
-            href={"/server-side"}
-            className="text-xl font-medium underline decoration-black"
-          >
-            Go to: Server-side
-          </Link>
+          <div className="flex items-center justify-center gap-3">
+            <Link
+              href={"/server-side"}
+              className="text-xl font-medium underline decoration-black"
+            >
+              Go to: Server-side
+            </Link>
+
+            <SignedIn>
+              <Link
+                href={"/user-profile"}
+                className="text-xl font-medium underline decoration-black"
+              >
+                Profile
+              </Link>
+            </SignedIn>
+          </div>
 
           <div className="flexborder-b rounded-xl bg-gray-50 p-4">
             <h4 className="text-left font-semibold">Geolocation Headers</h4>
