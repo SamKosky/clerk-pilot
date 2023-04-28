@@ -18,7 +18,7 @@ const config: IGraphQLConfig = {
         codegen: {
           overwrite: true,
           generates: {
-            "./apps/web/src/types/graphql/": {
+            "./apps/web/src/types/generated/": {
               preset: "client",
               config: {
                 namingConvention: {

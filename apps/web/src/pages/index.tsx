@@ -1,5 +1,7 @@
+import { SignedIn } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import ClientOnly from "~/components/ClientOnly";
 import Countries from "~/components/Countries";
 import Header from "~/components/Header";
@@ -22,9 +24,17 @@ const Home: NextPage = () => {
             Vercel | Hasura | Postgres | Clerk
           </h2>
 
-          <ClientOnly>
-            <Countries />
-          </ClientOnly>
+          <Link
+            href={"/server-side"}
+            className="text-xl font-medium underline decoration-black"
+          >
+            Go to: Server-side
+          </Link>
+          <SignedIn>
+            <ClientOnly>
+              <Countries />
+            </ClientOnly>
+          </SignedIn>
         </div>
       </main>
     </>
