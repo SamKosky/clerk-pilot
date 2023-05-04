@@ -1,13 +1,16 @@
 import { SignedIn } from "@clerk/nextjs";
+import lottie from "lottie-web";
 import {
   type GetServerSideProps,
   type InferGetServerSidePropsType,
 } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import ClientOnly from "~/components/ClientOnly";
 import Countries from "~/components/Countries";
 import Header from "~/components/Header";
+import winkyTongueAnim from "~/lotties/winky-tongue.json";
 
 export const getServerSideProps: GetServerSideProps<{
   city: string;
@@ -29,6 +32,23 @@ function Home({
   region,
   country,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const winkyTongueRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!winkyTongueRef.current) return;
+
+    lottie.loadAnimation({
+      container: winkyTongueRef.current,
+      loop: true,
+      autoplay: false,
+      animationData: winkyTongueAnim,
+    });
+
+    return () => {
+      lottie.destroy();
+    };
+  }, [winkyTongueRef]);
+
   return (
     <>
       <Head>
@@ -39,9 +59,17 @@ function Home({
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-black sm:text-[5rem]">
-            Clerk Postura
-          </h1>
+          <div className="flex items-center justify-center gap-4">
+            <h1 className="text-5xl font-extrabold tracking-tight text-black sm:text-[5rem]">
+              Clerk Postura
+            </h1>
+            <div
+              ref={winkyTongueRef}
+              className="h-16 w-16 cursor-pointer"
+              onMouseEnter={() => lottie.play()}
+              onMouseLeave={() => lottie.pause()}
+            />
+          </div>
           <h2 className="font-mono text-xl">
             Vercel | Hasura | Postgres | Clerk
           </h2>
